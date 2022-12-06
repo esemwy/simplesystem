@@ -1,0 +1,22 @@
+{
+  "SS.AbilityStr": "Strength",
+  "SS.AbilityCon": "Constitution",
+  "SS.AbilityDex": "Dexterity",
+  "SS.AbilityInt": "Intelligence",
+  "SS.AbilityWis": "Wisdom",
+  "SS.AbilityCha": "Charisma",
+
+  "SS.AbilityStrAbbr": "str",
+  "SS.AbilityConAbbr": "con",
+  "SS.AbilityDexAbbr": "dex",
+  "SS.AbilityIntAbbr": "int",
+  "SS.AbilityWisAbbr": "wis",
+  "SS.AbilityChaAbbr": "cha",
+
+  "SS.EffectCreate": "Create Effect",
+  "SS.EffectToggle": "Toggle Effect",
+  "SS.EffectEdit": "Edit Effect",
+  "SS.EffectDelete": "Delete Effect",
+
+  "SS.Add": "Add"
+}
