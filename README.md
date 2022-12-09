@@ -1,12 +1,12 @@
-# Simple System
+# The Simple System for Foundry VTT
 
 ![Foundry v10](https://img.shields.io/badge/foundry-v10-green)
 
 This is a simple skill based d20 system. There are no classes or races, and a modern setting is assumed. It is possible, at some future point, it will be adapted for magic, but not right now.
 
-### Tutorial
+### Starting Point
 
-For much more information on how to use this system as a starting point for making your own, see the [full tutorial on the Foundry Wiki](https://foundryvtt.wiki/en/development/guides/SD-tutorial)!
+For much more information on how to use the template that Simple System originated from as a starting point, see the [full tutorial on the Foundry Wiki](https://foundryvtt.wiki/en/development/guides/SD-tutorial)!
 
 ## Sheet Layout
 
