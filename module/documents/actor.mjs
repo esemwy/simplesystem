@@ -33,37 +33,46 @@ export class simplesystemActor extends Actor {
     const systemData = actorData.system;
     const flags = actorData.flags.simplesystem || {};
 
-    // Make separate methods for each Actor type (character, npc, etc.) to keep
+    // Make separate methods for each Actor type (character, vehicle, etc.) to keep
     // things organized.
     this._prepareCharacterData(actorData);
-    this._prepareNpcData(actorData);
+    this._prepareVehicleData(actorData);
   }
 
   /**
    * Prepare Character type specific data
    */
+
   _prepareCharacterData(actorData) {
     if (actorData.type !== 'character') return;
-
+    const abilityMod = [
+      -10,-10,-10,
+      -3,
+      -2,    -2,
+      -1,    -1,    -1,
+       0,     0,     0,     0,
+       1,     1,     1,
+       2,     2,
+       3
+    ];
+  
     // Make modifications to data here. For example:
     const systemData = actorData.system;
-
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(systemData.abilities)) {
       // Calculate the modifier using d20 rules.
-      ability.mod = Math.floor((ability.value - 10) / 2);
+      ability.mod = abilityMod[ability.value];
     }
   }
 
   /**
-   * Prepare NPC type specific data.
+   * Prepare Vehicle type specific data.
    */
-  _prepareNpcData(actorData) {
-    if (actorData.type !== 'npc') return;
+  _prepareVehicleData(actorData) {
+    if (actorData.type !== 'vehicle') return;
 
     // Make modifications to data here. For example:
     const systemData = actorData.system;
-    systemData.xp = (systemData.cr * systemData.cr) * 100;
   }
 
   /**
@@ -74,7 +83,7 @@ export class simplesystemActor extends Actor {
 
     // Prepare character roll data.
     this._getCharacterRollData(data);
-    this._getNpcRollData(data);
+    this._getVehicleRollData(data);
 
     return data;
   }
@@ -100,12 +109,12 @@ export class simplesystemActor extends Actor {
   }
 
   /**
-   * Prepare NPC roll data.
+   * Prepare Nehicle roll data.
    */
-  _getNpcRollData(data) {
-    if (this.type !== 'npc') return;
+  _getVehicleRollData(data) {
+    if (this.type !== 'vehicle') return;
 
-    // Process additional NPC data here.
+    // Process additional Vehicle data here.
   }
 
 }

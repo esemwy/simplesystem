@@ -7,9 +7,9 @@
   return loadTemplates([
 
     // Actor partials.
-    "systems/simplesystem/templates/actor/parts/actor-features.html",
-    "systems/simplesystem/templates/actor/parts/actor-items.html",
-    "systems/simplesystem/templates/actor/parts/actor-spells.html",
-    "systems/simplesystem/templates/actor/parts/actor-effects.html",
+    "systems/simplesystem/templates/actor/parts/actor-skills.html",
+    "systems/simplesystem/templates/actor/parts/actor-equipment.html",
+    "systems/simplesystem/templates/actor/parts/actor-tools.html",
+    "systems/simplesystem/templates/actor/parts/actor-weapons.html",
   ]);
 };

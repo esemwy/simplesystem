@@ -13,7 +13,7 @@ export class simplesystemActorSheet extends ActorSheet {
       template: "systems/simplesystem/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "tools" }]
     });
   }
 
@@ -45,8 +45,8 @@ export class simplesystemActorSheet extends ActorSheet {
       this._prepareCharacterData(context);
     }
 
-    // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
+    // Prepare Vehicle data and items.
+    if (actorData.type == 'vehicle') {
       this._prepareItems(context);
     }
 
@@ -83,43 +83,37 @@ export class simplesystemActorSheet extends ActorSheet {
   _prepareItems(context) {
     // Initialize containers.
     const gear = [];
-    const features = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: []
-    };
+    const tools = [];
+    const weapons = []
+    const skills = [];
+
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
       // Append to gear.
-      if (i.type === 'item') {
+      if (i.type === 'equipment') {
         gear.push(i);
       }
-      // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
+      // Append to tools.
+      else if (i.type === 'tool') {
+        tools.push(i);
       }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        if (i.system.spellLevel != undefined) {
-          spells[i.system.spellLevel].push(i);
-        }
+      // Append to weapons.
+      else if (i.type === 'weapon') {
+        weapons.push(i);
+      }
+      // Append to skills.
+      else if (i.type === 'skill') {
+        skills.push(i);
       }
     }
 
     // Assign and return
     context.gear = gear;
-    context.features = features;
-    context.spells = spells;
+    context.weapons = weapons;
+    context.tools = tools;
+    context.skills = skills;
   }
 
   /* -------------------------------------------- */

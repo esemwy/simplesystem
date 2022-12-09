@@ -1,26 +1,56 @@
 {
   "Actor": {
-    "types": ["character", "npc"],
-    "templates": {
-      "base": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        },
-        "power": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
-        "biography": ""
+    "types": ["character","vehicle"],
+    "templates": {},
+    "vehicle": {
+      "description": "",
+      "power": {
+        "current": 0,
+        "max": 0
+      },
+      "defense": {
+        "current": 0,
+        "max": 0
+      },
+      "speed": {
+        "value": 0,
+        "units": "mph"
+      },
+      "maneuver": {
+        "current": 0,
+        "max": 0
+      },
+      "size": {
+        "units": "ft",
+        "length": 0,
+        "width": 0,
+        "height": 0,
+        "weight": 0
+      },
+      "weight": {
+        "value": 0,
+        "units": "lbs"
       }
     },
     "character": {
-      "templates": ["base"],
+      "biography": "",
+      "level" : 1,
       "attributes": {
-        "level": {
-          "value": 1
+        "ac": {
+          "normal": 10,
+          "prone": 0
+        },
+        "hp": {
+          "value": 10,
+          "max": 10
+        },
+        "init": {
+          "value": 0,
+          "bonus": 0
+        },
+        "movement": {
+          "normal": 30,
+          "units": "ft"
         }
       },
       "abilities": {
@@ -43,31 +73,44 @@
           "value": 10
         }
       }
-    },
-    "npc": {
-      "templates": ["base"],
-      "cr": 0
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["equipment", "weapon", "tool", "skill"],
     "templates": {
       "base": {
         "description": ""
+      },
+      "bulk": {
+        "quantity": 1,
+        "weight": 0
+      },
+      "skilled": {
+        "skill": "pistol",
+        "dice": "1d6"
+      },
+      "charges": {
+        "charges": {
+          "value": 0,
+          "max": 0
+        }
       }
     },
-    "item": {
-      "templates": ["base"],
-      "quantity": 1,
-      "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+    "equipment": {
+      "templates": ["base","bulk"]
     },
-    "feature": {
-      "templates": ["base"]
+    "tool": {
+      "templates": ["base","bulk","charges","skilled"]
     },
-    "spell": {
+    "weapon": {
+      "templates": ["base","bulk","charges","skilled"]
+    },
+    "skill": {
       "templates": ["base"],
-      "spellLevel": 1
+      "attribute": "str",
+      "proficiency": 0,
+      "needs_item": false,
+      "unskilled": false
     }
   }
 }
