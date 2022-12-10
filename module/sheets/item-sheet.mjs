@@ -35,10 +35,15 @@ export class simplesystemItemSheet extends ItemSheet {
 
     // Retrieve the roll data for TinyMCE editors.
     context.rollData = {};
+    context.abilities = {};
     let actor = this.object?.parent ?? null;
     if (actor) {
       context.rollData = actor.getRollData();
     }
+
+    Object.keys(game.model.Actor.character.abilities).forEach((key) => {
+      context.abilities[key] = game.i18n.localize(CONFIG.SS.abilities[key]) ?? key;;
+    });
 
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = itemData.system;
