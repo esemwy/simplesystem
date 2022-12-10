@@ -25,7 +25,16 @@
       {{!-- As you add new fields, add them in here! --}}
       <div class="resource flexrow">
         <label class="resource-label">Attribute</label>
-        <input type="text" name="system.attribute" value="{{system.attribute}}" data-dtype="String"/>
+
+        <select name="system.attribute" data-type="String">
+          {{#select system.attribute}}
+          {{#each abilities as |abl a|}}
+          <option value="{{a}}">{{abl}}</option>
+          {{/each}}
+          {{/select}}
+        </select>
+
+        {{!-- <input type="text" name="system.attribute" value="{{system.attribute}}" data-dtype="String"/> --}}
       </div>
       <div class="resource flexrow">
         <label class="resource-label">Proficiency</label>
