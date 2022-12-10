@@ -37,8 +37,8 @@
       "level" : 1,
       "attributes": {
         "ac": {
-          "normal": 10,
-          "prone": 0
+          "value": 10,
+          "bonus": 0
         },
         "hp": {
           "value": 10,
