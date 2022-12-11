@@ -37,6 +37,12 @@ export class simplesystemItemSheet extends ItemSheet {
     context.rollData = {};
     context.abilities = {};
     let actor = this.object?.parent ?? null;
+
+    // Prepare character data and items.
+    if ((itemData.type == 'weapon') || (itemData.type == 'tool') {
+      this._prepareItems(context);
+    }
+
     if (actor) {
       context.rollData = actor.getRollData();
     }
@@ -52,6 +58,28 @@ export class simplesystemItemSheet extends ItemSheet {
     return context;
   }
 
+
+  /**
+   * Organize and classify Items for Character sheets.
+   *
+   * @param {Object} actorData The actor to prepare.
+   *
+   * @return {undefined}
+   */
+  _prepareItems(context) {
+    // Initialize containers.
+    const proficiencies = [];
+
+
+    // Iterate through items, allocating to containers
+    for (let i of context.items) {
+      i.img = i.img || DEFAULT_TOKEN;
+      // Append to gear.
+      if (i.type === 'proficience') {
+        proficiencies.push(i);
+      }
+    }
+  }
   /* -------------------------------------------- */
 
   /** @override */
