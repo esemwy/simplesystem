@@ -91,7 +91,6 @@
         "weight": 0
       },
       "bonus": {
-        "skill": "pistol",
         "dice": "1d6"
       },
       "uses": {
