@@ -7,9 +7,8 @@
   return loadTemplates([
 
     // Actor partials.
-    "systems/simplesystem/templates/actor/parts/actor-skills.html",
+    "systems/simplesystem/templates/actor/parts/actor-proficiencies.html",
     "systems/simplesystem/templates/actor/parts/actor-equipment.html",
-    "systems/simplesystem/templates/actor/parts/actor-tools.html",
-    "systems/simplesystem/templates/actor/parts/actor-weapons.html",
+    "systems/simplesystem/templates/actor/parts/actor-main.html",
   ]);
 };

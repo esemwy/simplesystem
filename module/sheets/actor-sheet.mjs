@@ -13,7 +13,7 @@ export class simplesystemActorSheet extends ActorSheet {
       template: "systems/simplesystem/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "tools" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main" }]
     });
   }
 
@@ -86,6 +86,7 @@ export class simplesystemActorSheet extends ActorSheet {
     const tools = [];
     const weapons = []
     const skills = [];
+    const proficiencies = [];
 
 
     // Iterate through items, allocating to containers
@@ -107,6 +108,10 @@ export class simplesystemActorSheet extends ActorSheet {
       else if (i.type === 'skill') {
         skills.push(i);
       }
+      // Append to proficiencies.
+      else if (i.type === 'proficiency') {
+        proficiencies.push(i);
+      }
     }
 
     // Assign and return
@@ -114,6 +119,7 @@ export class simplesystemActorSheet extends ActorSheet {
     context.weapons = weapons;
     context.tools = tools;
     context.skills = skills;
+    context.proficiencies = proficiencies;
   }
 
   /* -------------------------------------------- */
