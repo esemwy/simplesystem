@@ -94,8 +94,8 @@
         "skill": "pistol",
         "dice": "1d6"
       },
-      "charges": {
-        "charges": {
+      "uses": {
+        "uses": {
           "value": 0,
           "max": 0
         }
@@ -105,10 +105,10 @@
       "templates": ["base","bulk"]
     },
     "tool": {
-      "templates": ["base","bulk","charges","bonus"]
+      "templates": ["base","bulk","uses","bonus"]
     },
     "weapon": {
-      "templates": ["base","bulk","charges","bonus"]
+      "templates": ["base","bulk","uses","bonus"]
     },
     "skill": {
       "templates": ["base", "skilled"]
