@@ -76,16 +76,21 @@
     }
   },
   "Item": {
-    "types": ["equipment", "weapon", "tool", "skill"],
+    "types": ["equipment", "weapon", "tool", "skill", "proficiency"],
     "templates": {
       "base": {
         "description": ""
+      },
+      "skilled": {
+        "attribute": "str",
+        "level": 0,
+        "unskilled": false  
       },
       "bulk": {
         "quantity": 1,
         "weight": 0
       },
-      "skilled": {
+      "bonus": {
         "skill": "pistol",
         "dice": "1d6"
       },
@@ -100,17 +105,16 @@
       "templates": ["base","bulk"]
     },
     "tool": {
-      "templates": ["base","bulk","charges","skilled"]
+      "templates": ["base","bulk","charges","bonus"]
     },
     "weapon": {
-      "templates": ["base","bulk","charges","skilled"]
+      "templates": ["base","bulk","charges","bonus"]
     },
     "skill": {
-      "templates": ["base"],
-      "attribute": "str",
-      "proficiency": 0,
-      "needs_item": false,
-      "unskilled": false
+      "templates": ["base", "skilled"]
+    },
+    "proficiency": {
+      "templates": ["base", "skilled"]
     }
   }
 }
