@@ -12,6 +12,71 @@ export class simplesystemItem extends Item {
     super.prepareData();
   }
 
+
+  /** @override */
+  prepareBaseData() {
+    // Data modifications in this step occur before processing embedded
+    // documents or derived data.
+  }
+
+  /**
+   * @override
+   * Augment the basic actor data with additional dynamic data. Typically,
+   * you'll want to handle most of your calculated/derived data in this step.
+   * Data calculated in this step should generally not exist in template.json
+   * (such as ability modifiers rather than ability scores) and should be
+   * available both inside and outside of character sheets (such as if an actor
+   * is queried and has a roll executed directly from it).
+   */
+  prepareDerivedData() {
+    const itemData = this;
+    const systemData = itemData.system;
+    const flags = itemData.flags.simplesystem || {};
+
+    // Make separate methods for each Actor type (character, vehicle, etc.) to keep
+    // things organized.
+    this._prepareEquipmentData(itemData);
+    this._prepareWeaponData(itemData);
+    this._prepareToolData(itemData);
+    this._prepareSkillData(itemData);
+    this._prepareProficiencyData(itemData);
+  }
+
+  _prepareEquipmentData(itemData) {
+    if (itemData.type !== 'equipment') return;
+
+    // Make modifications to data here. For example:
+    const systemData = itemData.system;
+  }
+
+  _prepareWeaponData(itemData) {
+    if (itemData.type !== 'weapon') return;
+
+    // Make modifications to data here. For example:
+    const systemData = itemData.system;
+  }
+
+  _prepareToolData(itemData) {
+    if (itemData.type !== 'tool') return;
+
+    // Make modifications to data here. For example:
+    const systemData = itemData.system;
+  }
+
+  _prepareSkillData(itemData) {
+    if (itemData.type !== 'skill') return;
+
+    // Make modifications to data here. For example:
+    const systemData = itemData.system;
+  }
+
+  _prepareProficiencyData(itemData) {
+    if (itemData.type !== 'proficiency') return;
+
+    // Make modifications to data here. For example:
+    const systemData = itemData.system;
+  }
+
   /**
    * Prepare a data object which is passed to any Roll formulas which are created related to this Item
    * @private

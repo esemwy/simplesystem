@@ -91,6 +91,7 @@
         "weight": 0
       },
       "bonus": {
+        "proficiencies": [],
         "dice": "1d6"
       },
       "uses": {
@@ -103,17 +104,17 @@
     "equipment": {
       "templates": ["base","bulk"]
     },
-    "tool": {
-      "templates": ["base","bulk","uses","bonus"]
-    },
-    "weapon": {
-      "templates": ["base","bulk","uses","bonus"]
-    },
     "skill": {
       "templates": ["base", "skilled"]
     },
     "proficiency": {
       "templates": ["base", "skilled"]
+    },
+    "tool": {
+      "templates": ["base","bulk","uses","bonus"]
+    },
+    "weapon": {
+      "templates": ["base","bulk","uses","bonus"]
     }
   }
 }
