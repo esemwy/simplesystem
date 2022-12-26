@@ -146,8 +146,6 @@ export class simplesystemItemSheet extends ItemSheet {
 
     // Finally, create the item!
     // return await Item.create(itemData, {parent: this.item.system.proficiencies});
-    console.log('Header', header);
-    console.log('itemData', itemData);
     let proficiencies = this.item.system.proficiencies;
     if (proficiencies === undefined) proficiencies = [];
     proficiencies.push(itemData);
