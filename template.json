@@ -91,7 +91,7 @@
         "weight": 0
       },
       "bonus": {
-        "proficiencies": [],
+        "proficiency": "",
         "dice": "1d6"
       },
       "uses": {

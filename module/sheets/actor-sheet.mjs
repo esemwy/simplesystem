@@ -202,16 +202,21 @@ export class simplesystemActorSheet extends ActorSheet {
     event.preventDefault();
     const element = event.currentTarget;
     const dataset = element.dataset;
-
     // Handle item rolls.
     if (dataset.rollType) {
       if (dataset.rollType == 'item') {
         const itemId = element.closest('.item').dataset.itemId;
         const item = this.actor.items.get(itemId);
-        if (item) return item.roll();
+        if (item) {
+          const proficiency = this.actor.items.getName(item.system.proficiency);
+          const bonus = proficiency.system.level;
+          const attribute = proficiency.system.attribute;
+          item.system.formula = `d20 + @abilities.${attribute}.mod + ${bonus}`;
+          // item.system.formula = `1d20 + @attribute.${attribute}.mod + {bonus}`;
+          return item.roll();
+        } 
       }
     }
-
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
       let label = dataset.label ? `[ability] ${dataset.label}` : '';

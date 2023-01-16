@@ -10,6 +10,7 @@ export class simplesystemItemSheet extends ItemSheet {
       classes: ["simplesystem", "sheet", "item"],
       width: 520,
       height: 480,
+      dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}],
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }
@@ -67,17 +68,10 @@ export class simplesystemItemSheet extends ItemSheet {
    * @return {undefined}
    */
   _prepareItems(context) {
-    // Initialize containers.
-    // const proficiencies = [];
-
     // Iterate through items, allocating to containers
-    // for (let i of context.items) {
-    //   i.img = i.img || DEFAULT_TOKEN;
-    //   // Append to gear.
-    //   if (i.type === 'proficiency') {
-    //     proficiencies.push(i);
-    //   }
-    // }
+    const name = context.document.system.proficiency;
+    const proficiency = game.items.getName(name);
+    context.proficiency = proficiency;
   }
   /* -------------------------------------------- */
 
@@ -103,11 +97,6 @@ export class simplesystemItemSheet extends ItemSheet {
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
-      console.log('ev', ev);
-
-      // const item = this.item.system.proficiencies.get(li.data("itemId"));
-      // item.delete();
-      // li.slideUp(200, () => this.render(false));
     });
 
     // Drag events for macros.
@@ -145,12 +134,29 @@ export class simplesystemItemSheet extends ItemSheet {
     //delete itemData.system["type"];
 
     // Finally, create the item!
-    // return await Item.create(itemData, {parent: this.item.system.proficiencies});
-    let proficiencies = this.item.system.proficiencies;
-    if (proficiencies === undefined) proficiencies = [];
-    proficiencies.push(itemData);
+    let proficiency = this.item.system.proficiency;
+    if (proficiency === undefined) proficiency = "";
+    proficiency = itemData;
     return this.item.update({
-      "system.proficiencies": proficiencies
+      "system.proficiency": proficiency
+    });
+  }
+
+
+  /* -------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onDrop(event) {
+    const data = TextEditor.getDragEventData(event);
+    if (data.type != "Item") return;
+    const item = await Item.implementation.fromDropData(data);
+    const itemData = item.toObject();
+
+    let proficiency = this.item.system.proficiency;
+    if (proficiency === undefined) proficiency = "";
+    proficiency = itemData.name;
+    return this.item.update({
+      "system.proficiency": proficiency
     });
   }
 }

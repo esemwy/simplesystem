@@ -67,9 +67,6 @@ Handlebars.registerHelper('toLowerCase', function(str) {
   return str.toLowerCase();
 });
 
-Handlebars.registerHelper('debug', function(obj) {
-  console.log(obj);
-});
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */

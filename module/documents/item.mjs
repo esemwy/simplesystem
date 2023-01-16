@@ -98,7 +98,6 @@ export class simplesystemItem extends Item {
    */
   async roll() {
     const item = this;
-
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
     const rollMode = game.settings.get('core', 'rollMode');
@@ -117,7 +116,6 @@ export class simplesystemItem extends Item {
     else {
       // Retrieve roll data.
       const rollData = this.getRollData();
-
       // Invoke the roll and submit it to chat.
       const roll = new Roll(rollData.item.formula, rollData);
       // If you need to store the value first, uncomment the next line.
