@@ -63,6 +63,13 @@ export class simplesystemActor extends Actor {
       // Calculate the modifier using d20 rules.
       ability.mod = abilityMod[ability.value];
     }
+    systemData.skills = {};
+    for (let item of actorData.items) {
+      if ((item.type === 'skill') || (item.type === 'proficiency')) {
+        const name = item.name.toLowerCase().replaceAll(' ','_');
+        systemData.skills[name] = item.system;
+      }
+    }
   }
 
   /**

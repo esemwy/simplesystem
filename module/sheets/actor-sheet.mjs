@@ -106,7 +106,7 @@ export class simplesystemActorSheet extends ActorSheet {
       }
       // Append to skills.
       else if (i.type === 'skill') {
-        skills.push(i);
+        skills.push(i);        
       }
       // Append to proficiencies.
       else if (i.type === 'proficiency') {
@@ -204,17 +204,29 @@ export class simplesystemActorSheet extends ActorSheet {
     const dataset = element.dataset;
     // Handle item rolls.
     if (dataset.rollType) {
-      if (dataset.rollType == 'item') {
+      if (dataset.rollType.endsWith('-hit')) {
         const itemId = element.closest('.item').dataset.itemId;
         const item = this.actor.items.get(itemId);
         if (item) {
-          const proficiency = this.actor.items.getName(item.system.proficiency);
-          const bonus = proficiency.system.level;
-          const attribute = proficiency.system.attribute;
-          item.system.formula = `d20 + @abilities.${attribute}.mod + ${bonus}`;
+          let attribute = item.system.attribute;
+          let bonus = item.system.level;
+          if (item.type != 'skill') {
+            const proficiency = this.actor.items.getName(item.system.proficiency);
+            bonus = proficiency.system.level;
+            attribute = proficiency.system.attribute;
+          }
+          item.system.formula = `d20 + @abilities.${attribute}.mod + ${bonus}`;  
           // item.system.formula = `1d20 + @attribute.${attribute}.mod + {bonus}`;
           return item.roll();
-        } 
+        }
+      }
+      else if (dataset.rollType.endsWith('-damage')) {
+        const itemId = element.closest('.item').dataset.itemId;
+        const item = this.actor.items.get(itemId);
+        if (item) {
+          item.system.formula = item.system.dice;
+          return item.roll();
+        }
       }
     }
     // Handle rolls that supply the formula directly.

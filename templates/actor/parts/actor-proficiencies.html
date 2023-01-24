@@ -1,6 +1,8 @@
 <ol class="items-list">
   <li class="item flexrow items-header">
     <div class="item-name">Proficiency</div>
+    <div class="item-attribute">Attribute</div>
+    <div class="item-level">Level</div>
     <div class="item-controls">
       <a class="item-control item-create" title="Add proficiency" data-type="proficiency"><i class="fas fa-plus"></i> Add skill</a>
     </div>
@@ -9,9 +11,15 @@
     <li class="item flexrow" data-item-id="{{item._id}}">
       <div class="item-name flexrow">
         <div class="item-image">
-          <a class="rollable" data-roll-type="item"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></a>
+          <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
         </div>
         <h4>{{item.name}}</h4>
+      </div>
+      <div class="item-attribute flexrow">
+        <h4>{{item.system.attribute}}</h4>
+      </div>
+      <div class="item-level flexrow">
+        <h4>{{item.system.level}}</h4>
       </div>
       <div class="item-controls">
         <a class="item-control item-edit" title="Edit Proficiency"><i class="fas fa-edit"></i></a>
